@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>全局国际化配置文件,包括版权以及Button信息</comment>
+	<entry key="melon.title">欢迎使用大数据安全审计平台</entry>
+</properties>
