@@ -16,7 +16,13 @@
 	<entry key="mirana.task">我的任务</entry>
 	<entry key="mirana.account.info">账户信息</entry>
 	<entry key="mirana.modify.password">修改密码</entry>
-	
+	<entry key="mirana.home">回到主页</entry>
+	<entry key="mirana.403.hint">很抱歉，该资源还没有对您开放，试试其他页面，获取更精彩！</entry>
+	<entry key="mirana.403.desc">403错误，是一种在网站访问过程中，常见的错误提示，通常是由于服务器上文件或目录的权限设置导致的WEB访问错误。</entry>
+	<entry key="mirana.404.hint">糟糕了，该页面不存在！</entry>
+	<entry key="mirana.404.desc">404错误，是客户端在浏览网页时，服务器无法正常提供信息，或是服务器无法回应，且不知道原因所返回的页面。</entry>
+	<entry key="mirana.500.hint">很糟糕，我们的服务器开小差了！</entry>
+	<entry key="mirana.500.desc">500错误，是由于我们的服务器还存在不完善的地方。</entry>
 	
 	<entry key="account.userame.hint">账号或手机</entry>
 	<entry key="account.password">密码</entry>

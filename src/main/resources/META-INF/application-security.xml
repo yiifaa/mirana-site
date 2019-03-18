@@ -11,6 +11,7 @@
 	
 	<s:http pattern="/index.html*" security="none"/>
 	<s:http pattern="/static/**" security="none"/>
+	<s:http pattern="/app/error/*" security="none"/>
 	<s:http pattern="/app/login*" security="none"/>
 	
 	<s:http>
