@@ -1,0 +1,152 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="#{mirana.title}"></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    	<link rel="stylesheet" th:href="@{/static/css/coreui/icons/coreui-icons.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/flag-icon-css/flag-icon.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/font-awesome/css/font-awesome.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/simple-line-icons/css/simple-line-icons.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/pace-progress/css/pace.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/miranaui/style.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/jqGrid/ui.jqgrid-bootstrap.css}" media="all" />
+	</head>
+	<body>
+		<section class="card">
+			<div class="card-header">
+				<i class="icon-drop"></i> 用户管理
+			</div>
+			<div class="card-body">
+				<form class="mirana-query-form">
+				  <div class="form-row align-items-center">
+				    <div class="col-sm-4 my-1">
+				      <label class="sr-only" for="username" th:text="#{account.userame}"></label>
+				      <input type="text" class="form-control" name="username" id="username" th:placeholder="#{account.userame}">
+				    </div>
+				    
+				    <div class="col-auto my-1">
+				      <button type="button" class="btn btn-primary" id="btnQuery">查询</button>
+				    </div>
+				  </div>
+				</form>
+				<table id="userGrid"></table>
+				<div id="userGridRooter"></div>
+			</div>
+		</section>
+		<script type="text/javascript" th:src="@{/static/script/jquery/jquery.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/popper.js/popper.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/bootstrap/bootstrap.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/pace-progress/pace.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/perfect-scrollbar/perfect-scrollbar.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/coreui/coreui.js}" ></script>
+		<script th:src="@{/static/script/jquery/jqGrid.locale-cn.js}" type="text/javascript"></script>
+		<script th:src="@{/static/script/jquery/jquery.jqGrid.min.js}" type="text/javascript"></script>
+		<script type="text/javascript">
+			var QueryService = {
+					buildSearchForm : function(params) {
+				        var result = {}
+				        for(var prop in params) {
+				            if(prop != 'taskId') {
+				               result["searchForm." + prop] = params[prop] 
+				            } else {
+				               result[prop] = params[prop]     
+				            }            
+				        }
+				        return result
+				    }	
+			}
+			
+			function query() {
+				var username = $("#username").val();
+				return {
+					username
+				}				
+			}
+			
+			$(document).ready(function() {
+				$.jgrid.defaults.styleUI = 'Bootstrap'
+				$.jgrid.styleUI.Bootstrap.base.rowTable = "table table-bordered table-striped"
+				$.jgrid.styleUI.Bootstrap.common.icon_base = "fa"
+				$.jgrid.styleUI.Bootstrap.base.icon_first = "fa-fast-backward"
+				$.jgrid.styleUI.Bootstrap.base.icon_prev = "fa-backward"
+				$.jgrid.styleUI.Bootstrap.base.icon_next = "fa-forward"
+				$.jgrid.styleUI.Bootstrap.base.icon_end = "fa-fast-forward"
+				$.jgrid.styleUI.Bootstrap.base.icon_asc = "fa-sort-asc"
+				$.jgrid.styleUI.Bootstrap.base.icon_desc = "fa-sort-desc"
+				$.jgrid.styleUI.Bootstrap.base.icon_caption_open = "fa-arrow-up"
+				$.jgrid.styleUI.Bootstrap.base.icon_caption_close = "fa-arrow-down"
+				$.jgrid.styleUI.Bootstrap.subgrid = {
+				    icon_plus : 'fa fa-chevron-right',
+				    icon_minus : 'fa fa-chevron-down',
+				    icon_open : 'fa fa-chevron-left'
+				}
+				$("#userGrid").jqGrid({
+					height : "auto",
+                    styleUI : 'Bootstrap',
+                    emptyrecords : "暂时没有数据",
+                    shrinkToFit : true,
+                    cellLayout : 10,
+                    altRows : false, //是否间隔显示记录
+                    hoverrows : true,//是否激活Hover事件
+                    loadonce : false,
+                    multiselect: this.multiSelect,
+                    multiboxonly: this.multiboxonly,
+					autowidth: true,
+					pgbuttons : true,//是否显示
+					rowNum : this.pageSize,//每页的数量
+					rownumWidth : 30,
+					pginput : true,//是否可以输入页码
+					viewrecords: true,//是否显示记录条数
+					rowList: [10, 20, 50, 100],
+					toppager : false,	//是否在表格顶部也显示分页构件
+					pager: "#userGridRooter",
+                    pagerpos:'center',
+                    cmTemplate : {
+    					sortable : true,
+    			    	resizable : true,
+    			    	title : false,
+    			    	fixed : false,
+    			    	editable : false,//是否可编辑
+    			    	align : "left"
+    			    },
+    			    prmNames : {
+						page : "page", //  当前页数
+						rows : "size",//  每页数量
+						sort : "sd",// 排序字段
+						order : "dirt"// 排序方向
+					},
+    			    colModel : [{
+    			    	label : "姓名", name : "username", width : 200
+    			    }, {
+    			    	label : "已激活", name : "enabled", width: 150
+    			    }],
+    			    datatype: "json",
+                    jsonReader : {
+                        //  存放记录位置
+                        root : "content",
+                        //  当前页数
+                        page : "number",
+                        total : "totalPages",    // 所有的页数
+                        records : "totalElements", // 所有的记录数
+                        id : "id",
+                        repeatitems : false//设置此元素为true,将会容许出现重复元素,但是重复的元素无法同时选中
+                    },
+                    url : "/mirana-site/app/account/query",
+                   	autoencode : false,//转义服务器传送的数据，将HTML片段转义为普通字符串
+   					mtype: "GET",//数据的请求方式
+   					serializeGridData : function(postData) {
+   						let queryObj = QueryService.buildSearchForm(query())
+   						return Object.assign(postData, queryObj);
+   					}            
+				});
+				
+				$("#btnQuery").on("click", function(event) {
+					$("#userGrid").trigger("reloadGrid");
+					event.stopPropagation();
+				})
+			});
+		</script>
+	</body>
+</html>

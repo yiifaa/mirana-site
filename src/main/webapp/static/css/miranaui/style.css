@@ -15217,3 +15217,7 @@ body {
   background-position: right calc(0.375em + 0.1875rem) center;
 }
 /*# sourceMappingURL=style.css.map */
+
+.mirana-query-form {
+	margin-bottom : 15px;
+}

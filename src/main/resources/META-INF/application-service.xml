@@ -34,5 +34,18 @@
             </list>
         </property>
     </bean>
+    
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.yiifaa.mirana.commons.formatter.DirectionConverter" />
+			</list>
+		</property>
+		<property name="formatters">
+			<set>
+				<bean class="com.yiifaa.mirana.commons.formatter.DateFormatter"/>
+			</set>
+		</property>
+	</bean>
 	
 </beans>
