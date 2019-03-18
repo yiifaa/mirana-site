@@ -12,6 +12,7 @@
 	<entry key="mirana.register.now">立刻体验</entry>
 	<entry key="mirana.password.hint">找回密码</entry>
 	<entry key="mirana.logout">注销</entry>
+	<entry key="mirana.search">查询</entry>
 	<entry key="mirana.message">我的消息</entry>
 	<entry key="mirana.task">我的任务</entry>
 	<entry key="mirana.account.info">账户信息</entry>
@@ -25,7 +26,7 @@
 	<entry key="mirana.500.desc">500错误，是由于我们的服务器还存在不完善的地方。</entry>
 	
 	<entry key="account.userame.hint">账号或手机</entry>
-	<entry key="account.title">账号</entry>
+	<entry key="account.title">用户管理</entry>
 	<entry key="account.userame">账号</entry>
 	<entry key="account.password">密码</entry>
 	

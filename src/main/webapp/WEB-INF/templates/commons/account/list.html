@@ -16,7 +16,7 @@
 	<body>
 		<section class="card">
 			<div class="card-header">
-				<i class="icon-drop"></i> 用户管理
+				<i class="icon-drop"></i> <span th:text="account.title"></span>
 			</div>
 			<div class="card-body">
 				<form class="mirana-query-form">
@@ -27,7 +27,7 @@
 				    </div>
 				    
 				    <div class="col-auto my-1">
-				      <button type="button" class="btn btn-primary" id="btnQuery">查询</button>
+				      <button type="button" class="btn btn-primary" id="btnQuery" th:text="mirana.search"></button>
 				    </div>
 				  </div>
 				</form>
