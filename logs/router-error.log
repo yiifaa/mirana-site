@@ -1,0 +1,3 @@
+2019-03-18 15:23:03 - HHH000315: Exception executing batch [java.sql.BatchUpdateException: Duplicate entry 'admin' for key 'UK_20elytgx654xrmr5yl3pqtw5a'], SQL: insert into T_SECURITY_ACCOUNT (ACCOUNT_EXPIRED, ACCOUNT_LOCKED, CREATE_TIME, CREDENTIALS_EXPIRED, ACCOUNT_ENABLED, A_PASS, REMARK_NAME, USER_NAME, PK) values (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2019-03-18 15:23:03 - Duplicate entry 'admin' for key 'UK_20elytgx654xrmr5yl3pqtw5a'
+2019-03-18 15:23:03 - HHH000346: Error during managed flush [org.hibernate.exception.ConstraintViolationException: could not execute batch]

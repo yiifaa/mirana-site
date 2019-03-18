@@ -2,5 +2,23 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>全局国际化配置文件,包括版权以及Button信息</comment>
-	<entry key="melon.title">欢迎使用大数据安全审计平台</entry>
+	<entry key="mirana.title">欢迎使用信息安全管理平台</entry>
+	<entry key="mirana.company">信息安全</entry>
+	<entry key="mirana.copyright"><![CDATA[&copy; 2018 版权所有.]]></entry>
+	<entry key="mirana.login">登录</entry>
+	<entry key="mirana.login.hint">请登录您的账户</entry>
+	<entry key="mirana.register">注册</entry>
+	<entry key="mirana.register.hint">注册后，您能享有量体裁衣般的风险测评服务，并免费体验一众专业人员的贴心咨询服务，更有完善的风险降低与降低的解决方案。</entry>
+	<entry key="mirana.register.now">立刻体验</entry>
+	<entry key="mirana.password.hint">找回密码</entry>
+	<entry key="mirana.logout">注销</entry>
+	<entry key="mirana.message">我的消息</entry>
+	<entry key="mirana.task">我的任务</entry>
+	<entry key="mirana.account.info">账户信息</entry>
+	<entry key="mirana.modify.password">修改密码</entry>
+	
+	
+	<entry key="account.userame.hint">账号或手机</entry>
+	<entry key="account.password">密码</entry>
+	
 </properties>

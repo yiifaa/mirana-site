@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/META-INF/application-service.xml</config>
 		<config>src/main/webapp/META-INF/application-mvc.xml</config>
+		<config>src/main/resources/META-INF/application-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

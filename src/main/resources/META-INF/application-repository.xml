@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:repository="http://www.springframework.org/schema/data/repository"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.11.xsd">
+	
+	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource">
+	    <property name="driverClassName" value="${jdbc.driver}"/>
+	    <property name="url" value="${jdbc.url}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="${jdbc.password}"/>
+	    <property name="initialSize" value="10"/>
+	    <property name="maxIdle" value="50"/>
+	    <property name="maxWaitMillis" value="10000"/>
+        <property name="maxTotal" value="100" />
+	</bean> 
+	
+	<bean id="persistenceUnitManager"	class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+		<property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"/>
+		<property name="defaultDataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="entityManagerFactory"	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitManager" ref="persistenceUnitManager" />
+		<property name="persistenceUnitName" value="STIXU_PERSIST_UNIT" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<constructor-arg>
+			<ref bean="entityManagerFactory"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- order表示数字越小,执行的优先级越高 -->
+	<tx:annotation-driven transaction-manager="transactionManager" mode="proxy" proxy-target-class="false" order="1"/>
+	
+	<!-- 将原生的异常转换到DataAccessException的层次中 -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	<!-- 通过注解@PersistenceUnit和@PersistenceContext获取EntityManager、EntityManagerFactory -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+	
+	<jpa:repositories 	entity-manager-factory-ref="entityManagerFactory"
+						transaction-manager-ref="transactionManager"
+						query-lookup-strategy="create-if-not-found"
+						enable-default-transactions="true"
+						repository-impl-postfix="Impl"
+						base-class="com.yiifaa.mirana.persistence.impl.CustomRepositoryImpl"												
+						base-package="com.yiifaa">
+		<repository:exclude-filter type="regex" expression=".*Service" />
+	</jpa:repositories>
+	
+</beans>

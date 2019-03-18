@@ -48,9 +48,12 @@
 		<!-- 视图解析器，返回视图view -->
 		<property name="viewResolvers">
 			<list>
+			<!-- 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+					<property name="order" value="1"/>
+				</bean> -->
 				<bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
 					<property name="templateEngine" ref="templateEngine" />
-					<property name="order" value="1" />
+					<property name="order" value="10" />
 					<property name="viewNames" value="*.html" />
 				</bean>
 			</list>
@@ -67,6 +70,7 @@
 
 	<bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
+		<property name="messageSource" ref="messageSource"/>
 		<property name="enableSpringELCompiler" value="true" />
 	</bean>
 	

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title th:replace="${title}">Layout Title</title>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    	<link rel="stylesheet" th:href="@{/static/css/coreui/icons/coreui-icons.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/flag-icon-css/flag-icon.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/font-awesome/css/font-awesome.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/simple-line-icons/css/simple-line-icons.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/pace-progress/css/pace.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/miranaui/style.css}" media="all" />
+	</head>
+	<body>
+	    <div th:replace="${content}">
+	    </div>
+	    <script type="text/javascript" th:src="@{/static/script/jquery/jquery.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/popper.js/popper.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/bootstrap/bootstrap.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/pace-progress/pace.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/perfect-scrollbar/perfect-scrollbar.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/static/script/coreui/coreui.js}" ></script>
+	</body>
+</html>

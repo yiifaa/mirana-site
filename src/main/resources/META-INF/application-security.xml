@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:s="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+		
+	<bean id="passwordEncoder"  class="org.springframework.security.crypto.password.StandardPasswordEncoder">
+		<constructor-arg name="secret" value="MIRANA"/>
+	</bean>	
+	
+	<s:http pattern="/index.html*" security="none"/>
+	<s:http pattern="/static/**" security="none"/>
+	<s:http pattern="/app/login*" security="none"/>
+	
+	<s:http>
+		<s:intercept-url pattern="/app/client/**" access="hasRole('ROLE_CLIENT')" />
+		<s:intercept-url pattern="/app/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<s:intercept-url pattern="/app/**" access="hasRole('ROLE_BASE')" />
+		<s:csrf disabled="true"/>
+		<s:form-login 	login-page="/app/login"
+						authentication-success-forward-url="/app/home"
+						authentication-failure-forward-url="/app/login_fail"
+						always-use-default-target="false"
+						login-processing-url="/login_check"
+						default-target-url="/app/home" />
+		<s:logout invalidate-session="true"	logout-url="/login_out"/>				
+	</s:http>
+	
+	<s:authentication-manager>
+		<s:authentication-provider user-service-ref="accountService">
+			<s:password-encoder ref="passwordEncoder"/>
+		</s:authentication-provider>
+	</s:authentication-manager>
+
+</beans>

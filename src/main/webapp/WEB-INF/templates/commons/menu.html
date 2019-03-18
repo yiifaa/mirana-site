@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title th:text="#{melon.title}"></title>
+	<head th:replace="~{parts/default :: head}">
 	</head>
 	<body>
 		YES, MENU!
 		<h1 th:text="${menu.name}"></h1>
+		<a href="#" th:href="@{/index.html}">主页</a>
+		<div th:replace="~{parts/default :: copy}"></div>
 	</body>
 </html>
