@@ -16,6 +16,7 @@
 	
 	<s:http>
 		<s:intercept-url pattern="/app/client/**" access="hasRole('ROLE_CLIENT')" />
+		<s:intercept-url pattern="/app/sale/**" access="hasRole('ROLE_SALE')" />
 		<s:intercept-url pattern="/app/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<s:intercept-url pattern="/app/**" access="hasRole('ROLE_BASE')" />
 		<s:csrf disabled="true"/>

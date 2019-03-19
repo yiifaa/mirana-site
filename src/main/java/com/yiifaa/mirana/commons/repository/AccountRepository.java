@@ -22,5 +22,12 @@ public interface AccountRepository extends GenericRepository<Account, String> {
 	 * @return
 	 */
 	UserDetails findByUsernameIgnoreCase(String username);
+	
+	/**
+	 * 
+	 * @param username
+	 * @return
+	 */
+	Account findByUsername(String username);
 
 }

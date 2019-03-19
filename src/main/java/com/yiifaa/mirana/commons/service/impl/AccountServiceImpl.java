@@ -1,6 +1,5 @@
 package com.yiifaa.mirana.commons.service.impl;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
 
@@ -8,7 +7,6 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,11 +15,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.ImmutableMap.Builder;
+import com.yiifaa.mirana.commons.AccountType;
 import com.yiifaa.mirana.commons.domain.Account;
 import com.yiifaa.mirana.commons.domain.Role;
 import com.yiifaa.mirana.commons.query.AccountQuery;
 import com.yiifaa.mirana.commons.repository.AccountRepository;
 import com.yiifaa.mirana.commons.service.AccountService;
+import com.yiifaa.mirana.commons.service.RoleService;
 import com.yiifaa.mirana.persistence.GenericRepository;
 import com.yiifaa.mirana.persistence.query.PageQueryBuilder;
 import com.yiifaa.mirana.persistence.query.QueryUtil;
@@ -39,14 +39,17 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 
 	private PasswordEncoder passwordEncoder;
 	
+	private RoleService roleService;
+	
 	/**
 	 * @param accountDao
 	 */
 	@Inject
-	public AccountServiceImpl(AccountRepository accountDao, PasswordEncoder passwordEncoder) {
+	public AccountServiceImpl(AccountRepository accountDao, PasswordEncoder passwordEncoder, RoleService roleService) {
 		super();		
 		this.accountDao = accountDao;
 		this.passwordEncoder = passwordEncoder;
+		this.roleService = roleService;
 	}
 	
 	/*
@@ -128,9 +131,28 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	 * loadUserByUsername(java.lang.String)
 	 */
 	@Override
+	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails account = this.accountDao.findByUsernameIgnoreCase(username);
 		return account;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public Account persistByType(Account account, AccountType type) {
+		if(account.isNew()) {
+			Role baseRole = this.roleService.findByName(AccountType.BASE);
+			Role selfRole = this.roleService.findByName(type);
+			account.addRole(baseRole);
+			account.addRole(selfRole);
+		}
+		return this.save(account);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Account findByUsername(String username) {
+		return this.accountDao.findByUsername(username);
 	}
 
 }

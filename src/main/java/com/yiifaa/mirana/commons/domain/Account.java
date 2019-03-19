@@ -293,14 +293,12 @@ public class Account implements Identifiable<String>, UserDetails {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", username=" + username + "]";
+		return "Account [id=" + id + ", username=" + username + ", remarkName=" + remarkName + ", password=" + password
+				+ ", confirmPassword=" + confirmPassword + ", createTime=" + createTime + ", enabled=" + enabled
+				+ ", accountExpired=" + accountExpired + ", accountLocked=" + accountLocked + ", credentialsExpired="
+				+ credentialsExpired + ", roles=" + roles + "]";
 	}
 
 	/*

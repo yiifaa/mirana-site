@@ -1,7 +1,10 @@
 package com.yiifaa.mirana.commons.service;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 
+import com.yiifaa.mirana.commons.AccountType;
 import com.yiifaa.mirana.commons.domain.Role;
 import com.yiifaa.mirana.commons.query.RoleQuery;
 import com.yiifaa.mirana.persistence.GenericService;
@@ -16,5 +19,12 @@ import com.yiifaa.mirana.persistence.GenericService;
 public interface RoleService extends GenericService<Role, String> {
 
 	Page<Role> find(RoleQuery query);
+	
+	/**
+	 * 
+	 * @param type
+	 * @return
+	 */
+	Role findByName(AccountType type);
 
 }

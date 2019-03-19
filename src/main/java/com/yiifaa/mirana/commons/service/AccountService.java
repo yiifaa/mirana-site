@@ -2,6 +2,7 @@ package com.yiifaa.mirana.commons.service;
 
 import org.springframework.data.domain.Page;
 
+import com.yiifaa.mirana.commons.AccountType;
 import com.yiifaa.mirana.commons.domain.Account;
 import com.yiifaa.mirana.commons.query.AccountQuery;
 import com.yiifaa.mirana.persistence.GenericService;
@@ -15,5 +16,20 @@ import com.yiifaa.mirana.persistence.GenericService;
 public interface AccountService extends GenericService<Account, String> {
 
 	Page<Account> find(AccountQuery pageQuery);
+	
+	/**
+	 * 
+	 * @param account
+	 * @param type
+	 * @return
+	 */
+	Account persistByType(Account account, AccountType type);
+	
+	/**
+	 * 
+	 * @param username
+	 * @return
+	 */
+	Account findByUsername(String username);
 	
 }
