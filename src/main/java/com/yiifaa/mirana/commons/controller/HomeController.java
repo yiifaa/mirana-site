@@ -5,14 +5,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.yiifaa.mirana.commons.domain.Account;
-import com.yiifaa.mirana.commons.domain.Role;
 
 @Controller
 public class HomeController {
-
+	
 	@RequestMapping("/home")
 	public String index() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -31,17 +29,17 @@ public class HomeController {
 	}
 
 	@RequestMapping("/client/home")
-	public String clientHome() {
+	public String clientHome(Model model) {
 		return "/client/home";
 	}
 
 	@RequestMapping("/sale/home")
-	public String saleHome() {
+	public String saleHome(Model model) {
 		return "/sale/home";
 	}
 
 	@RequestMapping("/admin/home")
-	public String adminHome() {
+	public String adminHome(Model model) {
 		return "/admin/home";
 	}
 

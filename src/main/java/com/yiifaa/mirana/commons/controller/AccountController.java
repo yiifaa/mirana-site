@@ -13,7 +13,7 @@ import com.yiifaa.mirana.commons.query.AccountQuery;
 import com.yiifaa.mirana.commons.service.AccountService;
 
 @Controller
-@RequestMapping("/account")
+@RequestMapping("/admin/account")
 public class AccountController {
 	
 	private AccountService accountService;
@@ -26,7 +26,7 @@ public class AccountController {
 
 	@RequestMapping("/list")
 	public String list() {
-		return "commons/account/list";
+		return "admin/account/list";
 	}
 	
 	@RequestMapping("/query")

@@ -1,10 +1,117 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>SALE</h1>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/default :: layout(~{::section})}">
+	<body>
+		<section>
+			<div class="row">
+				<div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i>我的代办任务</div>
+                  <div class="card-body">
+                    <table class="table table-responsive-sm">
+                      <thead>
+                        <tr>
+                          <th>订单名称</th>
+                          <th>申请日期</th>
+                          <th>办理人</th>
+                          <th>状态</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Samppa Nori</td>
+                          <td>2012/01/01</td>
+                          <td>Member</td>
+                          <td>
+                            <span class="badge badge-success">Active</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Estavan Lykos</td>
+                          <td>2012/02/01</td>
+                          <td>Staff</td>
+                          <td>
+                            <span class="badge badge-danger">Banned</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Chetan Mohamed</td>
+                          <td>2012/02/01</td>
+                          <td>Admin</td>
+                          <td>
+                            <span class="badge badge-secondary">Inactive</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Derick Maximinus</td>
+                          <td>2012/03/01</td>
+                          <td>Member</td>
+                          <td>
+                            <span class="badge badge-warning">Pending</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Friderik Dávid</td>
+                          <td>2012/01/21</td>
+                          <td>Staff</td>
+                          <td>
+                            <span class="badge badge-success">Active</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#">Prev</a>
+                      </li>
+                      <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i>用户评测进度分析</div>
+                  	<div class="card-body">
+	              	</div>
+	              </div>
+	         </div>
+	         
+	         <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i>订单进度分析</div>
+                  <div class="card-body">
+	              </div>
+	              </div>
+	         </div>
+	         
+	         <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i>用户转换率分析</div>
+                  	<div class="card-body">
+	              	</div>
+	              </div>
+	         </div>
+
+			</div> 
+		</section>
+	</body>
 </html>

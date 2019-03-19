@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (content, scripts)">
+	<head th:replace="~{parts/default::header(_, ~{::link})}">
+		<link rel="stylesheet" th:href="@{/static/css/miranaui/style.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/jqGrid/ui.jqgrid-bootstrap.css}" media="all" />
+	</head>
+	<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+		<header th:replace="~{parts/navbar::header}"></header>
+		<div class="app-body">
+			<div th:replace="~{parts/menu::sidebar}"></div>
+			<main class="main">
+		        <ol class="breadcrumb">
+		          <li class="breadcrumb-item">主页</li>
+		          <li class="breadcrumb-item">
+		            <a href="#">仪表盘</a>
+		          </li>
+		          <!-- 
+		          <li class="breadcrumb-item active">Dashboard</li>
+		          <li class="breadcrumb-menu d-md-down-none">
+		            <div class="btn-group" role="group" aria-label="Button group">
+		              <a class="btn" href="#">
+		                <i class="icon-speech"></i>
+		              </a>
+		              <a class="btn" href="./">
+		                <i class="icon-graph"></i>  Dashboard</a>
+		              <a class="btn" href="#">
+		                <i class="icon-settings"></i>  Settings</a>
+		            </div>
+		           -->
+		          </li>
+		        </ol>
+		        <div class="container-fluid" th:insert="${content}">
+		         	Welcome 
+		        </div>
+			</main>
+		</div>
+		<div th:replace="~{parts/default::footer(~{::script})}">
+			<script th:src="@{/static/script/jquery/jqGrid.locale-cn.js}" type="text/javascript"></script>
+			<script th:src="@{/static/script/jquery/jquery.jqGrid.min.js}" type="text/javascript"></script>
+			<script th:src="@{/static/script/mirana/QueryGrid.js}" type="text/javascript"></script>
+		</div>
+		<th:block th:replace="${scripts}"/>
+	</body>
+</html>

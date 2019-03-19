@@ -48,4 +48,8 @@
 		</property>
 	</bean>
 	
+	<bean class="com.yiifaa.mirana.commons.service.impl.MenuReaderServiceImpl">
+		<constructor-arg name="menuResource" value="classpath:/menu.yaml"/>
+	</bean>
+	
 </beans>

@@ -24,10 +24,14 @@
 	<entry key="mirana.404.desc">404错误，是客户端在浏览网页时，服务器无法正常提供信息，或是服务器无法回应，且不知道原因所返回的页面。</entry>
 	<entry key="mirana.500.hint">很糟糕，我们的服务器开小差了！</entry>
 	<entry key="mirana.500.desc">500错误，是由于我们的服务器还存在不完善的地方。</entry>
+	<entry key="mirana.name">名称</entry>
 	
 	<entry key="account.userame.hint">账号或手机</entry>
 	<entry key="account.title">用户管理</entry>
 	<entry key="account.userame">账号</entry>
 	<entry key="account.password">密码</entry>
+	
+	
+	
 	
 </properties>

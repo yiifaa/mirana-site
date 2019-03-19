@@ -1,0 +1,27 @@
+ADMIN:
+  - { name: "仪表盘", url: "/app/dashboard", icon: "icon-speedometer"} 
+  - { name: "测评管理", url: "/app/admin/exam/list", icon: "icon-eyeglass"} 
+  - { name: "产品管理", url: "/app/admin/risk/list", icon: "icon-umbrella"} 
+  - { name: "用户管理", url: "/app/admin/account/list", icon: "icon-people"} 
+  - 
+    name: "我的任务"
+    url: "/app/tasks"
+    icon: "icon-star"
+    children:
+      - {name: "待办任务", url: "/task", icon: "icon-pencil"}
+      - {name: "已办任务", url: "/tasked", icon: "icon-puzzle"}
+      
+CLIENT:
+  - {name: "仪表盘", url: "/app/dashboard", icon: "icon-speedometer"}
+  - {name: "我的测评", url: "/app/client/ceshi", icon: "icon-cursor"}
+  
+SALE:
+  - { name: "仪表盘", url: "/app/dashboard", icon: "icon-speedometer"}
+  - 
+    name: "我的任务"
+    url: "/tasks"
+    icon: "icon-star"
+    children:
+      - {name: "待办任务", url: "/app/tasking", icon: "icon-pencil"}
+      - {name: "已办任务", url: "/app/tasked", icon: "icon-puzzle"}
+    

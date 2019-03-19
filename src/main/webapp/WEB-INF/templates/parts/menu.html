@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div class="sidebar" th:fragment="sidebar">
+	        <nav class="sidebar-nav">
+	          <ul class="nav">
+	          	<li th:class="${not #lists.isEmpty(menu.children)}?'nav-item nav-dropdown': 'nav-item'" th:each="menu : ${menus}">
+	              <a th:class="${not #lists.isEmpty(menu.children)}?'nav-link nav-dropdown-toggle': 'nav-link'" th:href="@{${menu.url}}">
+	                <i th:class="'nav-icon ' + ${menu.icon}"></i> <span th:text="${menu.name}"></span>
+	              </a>
+	              <ul class="nav-dropdown-items" th:if="${not #lists.isEmpty(menu.children)}">
+		                <li class="nav-item" th:each="child: ${menu.children}">
+		                  <a class="nav-link" th:href="@{${menu.url}}">
+		                    <i th:class="'nav-icon ' + ${child.icon}"></i> <span th:text="${child.name}"></span>
+		                  </a>
+		                </li>
+		          </ul>
+	            </li>
+	          </ul>
+	        </nav>
+	        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>
+	</body>
+</html>

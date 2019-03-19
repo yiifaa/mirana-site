@@ -18,6 +18,10 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
+			<bean class="com.yiifaa.mirana.commons.interceptor.MenuInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
 			<bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

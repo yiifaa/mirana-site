@@ -55,6 +55,9 @@ public class Account implements Identifiable<String>, UserDetails {
 	@Column(name = "A_PASS", length = 128)
 	@JsonIgnore
 	private String password;
+	
+	@Column(name = "A_PHONE", length = 20)
+	private String phone;
 
 	// 确认密码
 	@Transient
@@ -95,6 +98,17 @@ public class Account implements Identifiable<String>, UserDetails {
 		}
 		this.roles.add(role);
 	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 
 	/*
 	 * (non-Javadoc)

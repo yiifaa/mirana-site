@@ -22,7 +22,7 @@
 		<s:csrf disabled="true"/>
 		<s:form-login 	login-page="/app/login"
 						authentication-success-forward-url="/app/home"
-						authentication-failure-forward-url="/app/login_fail"
+						authentication-failure-forward-url="/app/login"
 						always-use-default-target="false"
 						login-processing-url="/login_check"
 						default-target-url="/app/home" />

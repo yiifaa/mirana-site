@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/list :: layout(~{::section}, ~{::script})}">
+	<body>
+		<section class="card">
+			<div class="card-header">
+				<i class="icon-drop"></i> <span th:text="#{account.title}"></span>
+			</div>
+			<div class="card-body">
+				<form class="mirana-query-form" onsubmit="return false;">
+				  <div class="form-row align-items-center">
+				    <div class="col-sm-4 my-1">
+				      <label class="sr-only" for="username" th:text="#{mirana.name}"></label>
+				      <input type="text" class="form-control" name="name" id="username" th:placeholder="#{mirana.name}">
+				    </div>
+				    
+				    <div class="col-auto my-1">
+				      <button type="button" class="btn btn-primary" id="btnQuery" th:text="#{mirana.search}"></button>
+				    </div>
+				  </div>
+				</form>
+				<table id="userGrid"></table>
+				<div id="userGridRooter"></div>
+			</div>
+		</section>
+		<script type="text/javascript">
+			function query() {
+				var name = $("#username").val();
+				return {
+					name
+				}				
+			}
+			
+			$(document).ready(function() {
+				//
+				QueryGrid({
+					el : "#userGrid",
+					url : "app/admin/risk/query",
+					colModel : [{
+    			    	label : "名称", name : "name", width : 200
+    			    },{
+    			    	label : "创建时间", name : "createTime", width : 200
+    			    }, {
+    			    	label : "备注", name : "remarks", width: 300
+    			    }],
+    			    query
+				});
+				//
+				$("#btnQuery").on("click", function(event) {
+					$("#userGrid").trigger("reloadGrid");
+					event.stopPropagation();
+				})
+			});
+		</script>
+	</body>
+</html>

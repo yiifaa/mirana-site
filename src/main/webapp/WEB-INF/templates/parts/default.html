@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:fragment="header">
+	<head th:fragment="header(title, links)">
 		<meta charset="UTF-8">
-		<title th:text="#{melon.title}"></title>
+		<title th:text="#{mirana.title}" th:replace="${title}"></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    	<link rel="stylesheet" th:href="@{/static/css/coreui/icons/coreui-icons.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/flag-icon-css/flag-icon.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/font-awesome/css/font-awesome.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/simple-line-icons/css/simple-line-icons.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/pace-progress/css/pace.css}" media="all" />
+    	<link rel="stylesheet" th:href="@{/static/css/miranaui/style.css}" media="all" />
+    	<th:block th:replace="${links}"/>
 	</head>
 	<body>
-		<div th:fragment="copy">
-			copyRight
+		<div th:fragment="footer(scripts)">
+			<footer class="app-footer">
+		      <div>
+		        <a href="#" th:text="#{mirana.company}"></a>
+		        <span th:utext="#{mirana.copyright}"></span>
+		      </div>
+		      <div class="ml-auto">
+		        <span>Powered by</span>
+		        <a th:href="@{/}" th:text="#{mirana.company}" id="rootUrl"></a>
+		      </div>
+		    </footer>
+			<script type="text/javascript" th:src="@{/static/script/jquery/jquery.min.js}" ></script>
+			<script type="text/javascript" th:src="@{/static/script/popper.js/popper.js}" ></script>
+			<script type="text/javascript" th:src="@{/static/script/bootstrap/bootstrap.min.js}" ></script>
+			<script type="text/javascript" th:src="@{/static/script/pace-progress/pace.min.js}" ></script>
+			<script type="text/javascript" th:src="@{/static/script/perfect-scrollbar/perfect-scrollbar.min.js}" ></script>
+			<script type="text/javascript" th:src="@{/static/script/coreui/coreui.js}" ></script>
+			<th:block th:replace="${scripts}"/>
 		</div>
 	</body>
 </html>
