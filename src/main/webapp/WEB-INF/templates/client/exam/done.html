@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/normal :: layout(~{::section}, ~{::script})}">
+	<body>
+		<section class="card">
+			<div class="card-header">
+				<i class="icon-drop"></i> <span>测评结果</span>
+			</div>
+			<div class="card-body">
+				<p>根据您的测评结果，我们向你推荐以下产品：</p>
+				<table class="table table-responsive-sm table-bordered">
+                      <thead>
+                        <tr>
+                          <th>产品名称</th>
+                          <th>上市日期</th>
+                          <th>价格</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="item: ${riskItems}">
+                          <td th:text="${item.name}"></td>
+                          <td th:text="${item.createTime}"></td>
+                          <td th:text="${item.price}"></td>
+                          <td>
+                            <a th:href="@{/app/client/risk/order/{id}(id=${item.id})}">选购</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+			</div>
+		</section>
+		<script type="text/javascript">
+		</script>
+	</body>
+</html>

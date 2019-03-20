@@ -10,6 +10,7 @@
 		<class>com.yiifaa.mirana.exam.domain.RiskExam</class>
 		<class>com.yiifaa.mirana.exam.domain.RiskItem</class>
 		<class>com.yiifaa.mirana.exam.domain.RiskOrder</class>
+		<class>com.yiifaa.mirana.exam.domain.ExamState</class>
 		
 		<exclude-unlisted-classes/>
 		<validation-mode>NONE</validation-mode>

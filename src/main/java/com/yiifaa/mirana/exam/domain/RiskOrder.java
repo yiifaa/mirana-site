@@ -30,6 +30,9 @@ public class RiskOrder implements Identifiable<Long> {
 	@Column(name="ORDER_STATE")
 	private Integer state = 0;
 	
+	@Column(name="USER_ID")
+	private String userId;
+	
 	@Column(name="ClIENT_NAME")
 	private String clientName;
 	
@@ -92,6 +95,15 @@ public class RiskOrder implements Identifiable<Long> {
 
 	public void setRiskId(Long riskId) {
 		this.riskId = riskId;
+	}
+	
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	@Override

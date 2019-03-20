@@ -1,96 +1,64 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/default :: layout(~{::section})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/list :: layout(~{::section}, ~{::script})}">
 	<body>
 		<section>
 			<div class="row">
 				<div class="col-lg-6">
                 <div class="card">
                   <div class="card-header">
-                    <i class="fa fa-align-justify"></i>我的代办任务</div>
+                    <i class="fa fa-align-justify"></i>接收用户订单</div>
                   <div class="card-body">
-                    <table class="table table-responsive-sm">
+                    <table class="table table-responsive-sm" id="userOrder">
                       <thead>
                         <tr>
                           <th>订单名称</th>
                           <th>申请日期</th>
-                          <th>办理人</th>
+                          <th>申请人</th>
                           <th>状态</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Samppa Nori</td>
-                          <td>2012/01/01</td>
-                          <td>Member</td>
+                        <tr th:each="item: ${orders}">
+                          <td th:text="${item.name}"></td>
+                          <td th:text="${item.createTime}"></td>
+                          <td th:text="${item.clientName}"></td>
                           <td>
-                            <span class="badge badge-success">Active</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Estavan Lykos</td>
-                          <td>2012/02/01</td>
-                          <td>Staff</td>
-                          <td>
-                            <span class="badge badge-danger">Banned</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Chetan Mohamed</td>
-                          <td>2012/02/01</td>
-                          <td>Admin</td>
-                          <td>
-                            <span class="badge badge-secondary">Inactive</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Derick Maximinus</td>
-                          <td>2012/03/01</td>
-                          <td>Member</td>
-                          <td>
-                            <span class="badge badge-warning">Pending</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Friderik Dávid</td>
-                          <td>2012/01/21</td>
-                          <td>Staff</td>
-                          <td>
-                            <span class="badge badge-success">Active</span>
+                            <button class="btn btn-sm btn-primary" th:alt="${item.id}">接受</button>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#">Prev</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
               
               <div class="col-lg-6">
-                <div class="card">
+               <div class="card">
                   <div class="card-header">
-                    <i class="fa fa-align-justify"></i>用户评测进度分析</div>
-                  	<div class="card-body">
-	              	</div>
-	              </div>
+                    <i class="fa fa-align-justify"></i>审批用户订单</div>
+                  <div class="card-body">
+                    <table class="table table-responsive-sm" id="myOrder">
+                      <thead>
+                        <tr>
+                          <th>订单名称</th>
+                          <th>申请日期</th>
+                          <th>申请人</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="item: ${shenOrder}">
+                          <td th:text="${item.name}"></td>
+                          <td th:text="${item.createTime}"></td>
+                          <td th:text="${item.clientName}"></td>
+                          <td>
+                            <button class="btn btn-sm btn-primary" th:alt="${item.id}">通过</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
 	         </div>
 	         
 	         <div class="col-lg-6">
@@ -113,5 +81,26 @@
 
 			</div> 
 		</section>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#userOrder button.btn").on("click", function(event) {
+					var id = $(this).attr("alt");
+					var rootUrl = $("#rootUrl").attr("href"),
+						url = rootUrl + "app/sale/risk/accept/" + id;
+					$.post(url, function() {
+						window.location.reload();
+					})
+				});
+				
+				$("#myOrder button.btn").on("click", function(event) {
+					var id = $(this).attr("alt");
+					var rootUrl = $("#rootUrl").attr("href"),
+						url = rootUrl + "app/sale/risk/complete/" + id;
+					$.post(url, function() {
+						window.location.reload();
+					})
+				});
+			});
+		</script>
 	</body>
 </html>

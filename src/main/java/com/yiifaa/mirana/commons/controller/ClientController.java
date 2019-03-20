@@ -2,7 +2,7 @@ package com.yiifaa.mirana.commons.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/client")
+//@RequestMapping("/client")
 public class ClientController {
 	
 	@RequestMapping("/home")

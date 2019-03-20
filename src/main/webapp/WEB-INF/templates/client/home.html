@@ -18,68 +18,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Samppa Nori</td>
-                          <td>2012/01/01</td>
-                          <td>Member</td>
-                          <td>
-                            <span class="badge badge-success">Active</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Estavan Lykos</td>
-                          <td>2012/02/01</td>
-                          <td>Staff</td>
-                          <td>
-                            <span class="badge badge-danger">Banned</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Chetan Mohamed</td>
-                          <td>2012/02/01</td>
-                          <td>Admin</td>
-                          <td>
-                            <span class="badge badge-secondary">Inactive</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Derick Maximinus</td>
-                          <td>2012/03/01</td>
-                          <td>Member</td>
-                          <td>
-                            <span class="badge badge-warning">Pending</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Friderik Dávid</td>
-                          <td>2012/01/21</td>
-                          <td>Staff</td>
-                          <td>
-                            <span class="badge badge-success">Active</span>
-                          </td>
+                        <tr th:each="order: ${orders}">
+                          <td th:text="${order.name}"></td>
+                          <td th:text="${order.createTime}"></td>
+                          <td th:text="${order.saleName}"></td>
+                          <td th:switch="${order.state}">
+							<span class="badge badge-success" th:case="100">已完成</span>
+							<span class="badge badge-primary" th:case="*">办理中</span>
+						  </td>
                         </tr>
                       </tbody>
                     </table>
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#">Prev</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -89,7 +38,31 @@
                   <div class="card-header">
                     <i class="fa fa-align-justify"></i>我的评测</div>
                   	<div class="card-body">
-	              	</div>
+						<table class="table table-responsive-sm">
+							<thead>
+								<tr>
+									<th>测评名称</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="item: ${exams}">
+									<td th:text="${item.name}"></td>
+									<td th:switch="${item.state}">
+										<span class="badge badge-warning" th:case="1">进行中</span>
+										<span class="badge badge-success" th:case="2">已完成</span>
+										<span class="badge badge-secondary" th:case="*">未开始</span>
+									</td>
+									<td th:switch="${item.state}">
+										<a class="btn btn-warning btn-sm" th:case="1" th:href="@{/app/client/exam/doing/{id}(id=${item.sid})}">继续</a>
+										<a class="btn btn-success btn-sm" th:case="2" th:href="@{/app/client/exam/done/{id}(id=${item.sid})}">查看报告</a>
+										<a class="btn btn-primary btn-sm" th:case="*" th:href="@{/app/client/exam/start/{id}(id=${item.id})}">开始评测</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 	              </div>
 	         </div>
 	         

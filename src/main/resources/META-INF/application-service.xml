@@ -14,6 +14,13 @@
 	</context:component-scan>		
 
 	<bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+		<property name="serializersByType">
+		  <map>
+		      <entry key="java.util.Date">
+		          <bean class="com.yiifaa.mirana.commons.json.DateTimeSerializer"/>
+		      </entry>
+		  </map>
+		</property>
 		<property name="featuresToDisable">
            <array>
              <util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.WRITE_NULL_MAP_VALUES"/>

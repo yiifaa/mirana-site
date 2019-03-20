@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (content, scripts)">
+	<head th:replace="~{parts/default::header(_, ~{})}">
+	</head>
+	<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+		<header th:replace="~{parts/navbar::header}"></header>
+		<div class="app-body">
+			<div th:replace="~{parts/menu::sidebar}"></div>
+			<main class="main">
+		        <ol class="breadcrumb">
+		          <li class="breadcrumb-item">主页</li>
+		          <li class="breadcrumb-item">
+		            <a href="#">仪表盘</a>
+		          </li>
+		        </ol>
+		        <div class="container-fluid" th:insert="${content}">
+		         	Welcome 
+		        </div>
+			</main>
+		</div>
+		<div th:replace="~{parts/default::footer(~{})}">
+		</div>
+		<th:block th:replace="${scripts}"/>
+	</body>
+</html>

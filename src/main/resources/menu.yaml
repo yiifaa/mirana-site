@@ -12,8 +12,17 @@ ADMIN:
       - {name: "已办任务", url: "/tasked", icon: "icon-puzzle"}
       
 CLIENT:
-  - {name: "仪表盘", url: "/app/dashboard", icon: "icon-speedometer"}
+  - {name: "仪表盘", url: "/app/client/home", icon: "icon-speedometer"}
+  - {name: "我的订单", url: "/app/client/order", icon: "icon-cursor"}
   - {name: "我的测评", url: "/app/client/ceshi", icon: "icon-cursor"}
+  - 
+    name: "我的福利"
+    url: "/app/tasks"
+    icon: "icon-star"
+    children:
+      - {name: "安全资讯", url: "/task", icon: "icon-pencil"}
+      - {name: "安全培训", url: "/tasked", icon: "icon-puzzle"}
+      - {name: "产品速报", url: "/tasked", icon: "icon-puzzle"}
   
 SALE:
   - { name: "仪表盘", url: "/app/dashboard", icon: "icon-speedometer"}

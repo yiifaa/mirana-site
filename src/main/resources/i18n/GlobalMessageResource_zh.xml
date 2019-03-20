@@ -32,6 +32,10 @@
 	<entry key="account.password">密码</entry>
 	
 	
+	<entry key="exam.title">测评管理</entry>
+	<entry key="risk.title">产品管理</entry>
+	
+	
 	
 	
 </properties>

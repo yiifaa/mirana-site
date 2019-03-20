@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/normal :: layout(~{::section}, ~{::script})}">
+	<body>
+		<section class="card">
+			<div class="card-header">
+				<i class="icon-drop"></i> <span>订购成功</span>
+			</div>
+			<div class="card-body">
+				<div class="jumbotron">
+				  <h1 class="display-4">恭喜您，订购成功！</h1>
+				  <p class="lead">请稍候，我们正在加速为您办理保单业务.</p>
+				  <hr class="my-4">
+				  <p th:text="${riskOrder.name}"></p>
+				  <p th:text="${riskOrder.createTime}"></p>
+				  <a class="btn btn-primary btn-lg" href="@{/app/client/home}" role="button">回到主页</a>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/normal :: layout(~{::section}, ~{::script})}">
+	<body>
+		<section class="card">
+			<div class="card-header">
+				<i class="icon-drop"></i> <span>订单明细</span>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-8 offset-md-2">
+						<form onsubmit="return false;">
+						  <div class="form-group row">
+						    <label for="staticEmail" class="col-sm-4 col-form-label">产品名称：</label>
+						    <div class="col-sm-8">
+						    	 <span class="form-control-plaintext" th:text="${riskItem.name}"></span>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="staticEmail" class="col-sm-4 col-form-label">上市日期：</label>
+						    <div class="col-sm-8">
+						    	 <span class="form-control-plaintext" th:text="${riskItem.createTime}"></span>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="staticEmail" class="col-sm-4 col-form-label">产品价格：</label>
+						    <div class="col-sm-8">
+						    	 <span class="form-control-plaintext" th:text="${riskItem.price}"></span>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label for="staticEmail" class="col-sm-4 col-form-label">产品介绍：</label>
+						    <div class="col-sm-8">
+						    	 <span class="form-control-plaintext" th:text="${riskItem.remarks}"></span>
+						    </div>
+						  </div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript">
+		</script>
+	</body>
+</html>
